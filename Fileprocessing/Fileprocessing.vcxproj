@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{6E24D21F-D3FE-4FD7-9197-8A3CD560D228}</ProjectGuid>
-    <RootNamespace>Datastructure</RootNamespace>
+    <ProjectGuid>{9FC40730-A590-46EC-A495-DD9778A21121}</ProjectGuid>
+    <RootNamespace>Fileprocessing</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,7 +115,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="heap.c" />
     <ClCompile Include="hw1.c" />
     <ClCompile Include="hw2.c" />
     <ClCompile Include="hw3.c" />

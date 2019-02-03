@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="heap.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="hw1.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
