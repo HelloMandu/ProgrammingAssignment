@@ -42,7 +42,7 @@ void pushProcess(int allTime) {
 	}
 }
 
-int getWaitingTime(int n) {
+int getWaitingTime() {
 	int waitingTime = 0, allTime = 0;
 	while (!readyQueue.empty() || !sjfQueue.empty()) {
 		Process front;
@@ -72,6 +72,6 @@ int main() {
 		inp >> input.num >> input.arrivedTime >> input.cpuSchedule;
 		readyQueue.push(input);
 	}
-	out << getWaitingTime(n);
+	out << getWaitingTime();
 	return 0;
 }

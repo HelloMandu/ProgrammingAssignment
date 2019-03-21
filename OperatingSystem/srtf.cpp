@@ -62,14 +62,10 @@ int getWaitingTime() {
 			readyQueue.erase(readyQueue.begin());
 			sort(srtfQueue.begin(), srtfQueue.end(), compare2);
 		}
-		/**/
 		if (front < srtfQueue.size()) {
 			for (int i = front + 1; i < srtfQueue.size(); i++) {
 				srtfQueue[i].waitedTime++;
 			}
-		}
-		/**/
-		if (front < srtfQueue.size()) {
 			if (srtfQueue[front].cpuSchedule > 0) {
 				srtfQueue[front].cpuSchedule--;
 				/*cpu스케줄링이 끝낫을 경우 front++*/
