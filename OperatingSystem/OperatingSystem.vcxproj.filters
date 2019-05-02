@@ -24,15 +24,18 @@
     <ClCompile Include="srtf.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="banker.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="srtf.inp">
-      <Filter>리소스 파일</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="srtf.out">
+    <None Include="banker.out">
       <Filter>리소스 파일</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="banker.inp">
+      <Filter>리소스 파일</Filter>
+    </Text>
   </ItemGroup>
 </Project>
