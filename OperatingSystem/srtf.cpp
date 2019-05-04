@@ -4,7 +4,7 @@
 using namespace std;
 
 struct Process {
-	int num, arrivedTime, cpuSchedule, waitedTime = 0;
+	int pid, arrivedTime, cpuSchedule, waitedTime = 0;
 };
 
 vector<Process> readyQueue, srtfQueue;
@@ -14,7 +14,7 @@ int front = 0;
 bool compare1(Process &a, Process &b) {
 	if (a.arrivedTime == b.arrivedTime) {
 		if (a.cpuSchedule == b.cpuSchedule) {
-			return a.num < b.num;
+			return a.pid < b.pid;
 		}
 		return a.cpuSchedule < b.cpuSchedule;
 	}
@@ -25,7 +25,7 @@ bool compare1(Process &a, Process &b) {
 bool compare2(Process &a, Process &b) {
 	if (a.cpuSchedule == b.cpuSchedule) {
 		if (a.arrivedTime == b.arrivedTime) {
-			return a.num < b.num;
+			return a.pid < b.pid;
 		}
 		return a.arrivedTime < b.arrivedTime;
 	}
@@ -88,7 +88,7 @@ int main() {
 	readyQueue.reserve(n);
 	for (int i = 0; i < n; i++) {
 		Process input;
-		inp >> input.num >> input.arrivedTime >> input.cpuSchedule;
+		inp >> input.pid >> input.arrivedTime >> input.cpuSchedule;
 		readyQueue.push_back(input);
 	}
 	sort(readyQueue.begin(), readyQueue.end(), compare1);

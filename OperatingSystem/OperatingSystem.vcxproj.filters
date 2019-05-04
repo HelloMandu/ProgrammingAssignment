@@ -27,15 +27,18 @@
     <ClCompile Include="banker.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="allocation.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="banker.out">
-      <Filter>리소스 파일</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="banker.inp">
+    <Text Include="allocation.inp">
       <Filter>리소스 파일</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="allocation.out">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

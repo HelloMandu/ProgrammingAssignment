@@ -4,7 +4,7 @@
 using namespace std;
 
 struct Process {
-	int num, arrivedTime, cpuSchedule;
+	int pid, arrivedTime, cpuSchedule;
 };
 
 /*readyQueue ºñ±³*/
@@ -12,7 +12,7 @@ struct compare1{
 	bool operator()(Process &a, Process &b) {
 		if (a.arrivedTime == b.arrivedTime) {
 			if (a.cpuSchedule == b.cpuSchedule) {
-				return a.num > b.num;
+				return a.pid > b.pid;
 			}
 			return a.cpuSchedule > b.cpuSchedule;
 		}
@@ -25,7 +25,7 @@ struct compare2 {
 	bool operator()(Process &a, Process &b) {
 		if (a.cpuSchedule == b.cpuSchedule) {
 			if (a.arrivedTime == b.arrivedTime) {
-				return a.num > b.num;
+				return a.pid > b.pid;
 			}
 			return a.arrivedTime > b.arrivedTime;
 		}
@@ -69,7 +69,7 @@ int main() {
 	inp >> n;
 	for (int i = 0; i < n; i++) {
 		Process input;
-		inp >> input.num >> input.arrivedTime >> input.cpuSchedule;
+		inp >> input.pid >> input.arrivedTime >> input.cpuSchedule;
 		readyQueue.push(input);
 	}
 	out << getWaitingTime();

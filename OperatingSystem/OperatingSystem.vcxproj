@@ -115,7 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="banker.cpp" />
+    <ClCompile Include="allocation.cpp" />
+    <ClCompile Include="banker.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="fcfs.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -127,10 +130,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="banker.inp" />
+    <Text Include="allocation.inp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="banker.out" />
+    <None Include="allocation.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

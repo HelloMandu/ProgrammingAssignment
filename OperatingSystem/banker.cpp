@@ -165,7 +165,7 @@ void computeRelease() {
 			}
 			delete[] Queue[it].request;
 			Queue.erase(Queue.begin() + it, Queue.begin() + it + 1);
-			it = -1;
+			it--;
 		}
 	}
 	printAvailable();
