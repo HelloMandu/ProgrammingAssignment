@@ -30,14 +30,17 @@
     <ClCompile Include="allocation.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="page.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="allocation.inp">
+    <Text Include="page.inp">
       <Filter>리소스 파일</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="allocation.out">
+    <None Include="page.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
