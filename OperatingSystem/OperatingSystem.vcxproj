@@ -121,10 +121,13 @@
     <ClCompile Include="banker.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="disk.cpp" />
     <ClCompile Include="fcfs.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="page.cpp" />
+    <ClCompile Include="page.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="sjf.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -133,10 +136,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="page.inp" />
+    <Text Include="disk.inp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="page.out" />
+    <None Include="disk.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

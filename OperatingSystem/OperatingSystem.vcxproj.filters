@@ -33,14 +33,17 @@
     <ClCompile Include="page.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="disk.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="page.inp">
+    <Text Include="disk.inp">
       <Filter>리소스 파일</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="page.out">
+    <None Include="disk.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
