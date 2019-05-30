@@ -13,12 +13,12 @@ vector<Request> request;
 string type;
 int transmissionTime;
 
-void input(ifstream &inp) {	
+void input(ifstream &inp) {
 	inp >> type >> transmissionTime;
 	while (true) {
 		int time, head;
 		inp >> time >> head;
-		if (time == -1 && head == -1) { 
+		if (time == -1 && head == -1) {
 			return;
 		}
 		request.push_back({ time, head });
@@ -43,13 +43,11 @@ void fcfs(ofstream &out) {
 			time = request[front].time;
 			push(Queue, front, time);
 		}
-		else {
-			while (!Queue.empty()) {
-				Request now = Queue.front(); Queue.erase(Queue.begin());
-				time += getDistance(header, now.head) + transmissionTime;
-				header = now.head;
-				push(Queue, front, time);
-			}
+		while (!Queue.empty()) {
+			Request now = Queue.front(); Queue.erase(Queue.begin());
+			time += getDistance(header, now.head) + transmissionTime;
+			header = now.head;
+			push(Queue, front, time);
 		}
 	}
 	out << time << ' ' << header;
@@ -74,13 +72,11 @@ void sstf(ofstream &out) {
 			time = request[front].time;
 			push(Queue, front, time);
 		}
-		else {
-			while (!Queue.empty()) {
-				Request now = findNearRequest(Queue, header);
-				time += getDistance(header, now.head) + transmissionTime;
-				header = now.head;
-				push(Queue, front, time);
-			}
+		while (!Queue.empty()) {
+			Request now = findNearRequest(Queue, header);
+			time += getDistance(header, now.head) + transmissionTime;
+			header = now.head;
+			push(Queue, front, time);
 		}
 	}
 	out << time << ' ' << header;
@@ -134,17 +130,15 @@ void look(ofstream &out) {
 	int time = 0, header = 0, front = 0, direction = RIGHT;
 	vector<Request> Queue;
 	while (front < request.size()) {
-		if (Queue.empty()) { 
+		if (Queue.empty()) {
 			time = request[front].time;
 			push(Queue, front, time);
 		}
-		else {
-			while (!Queue.empty()) {
-				Request now = findLookRequest(Queue, header, direction);
-				time += getDistance(header, now.head) + transmissionTime;
-				header = now.head;
-				push(Queue, front, time);
-			}
+		while (!Queue.empty()) {
+			Request now = findLookRequest(Queue, header, direction);
+			time += getDistance(header, now.head) + transmissionTime;
+			header = now.head;
+			push(Queue, front, time);
 		}
 	}
 	out << time << ' ' << header;
