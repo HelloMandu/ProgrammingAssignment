@@ -31,6 +31,10 @@ void push(vector<Request> &Queue, int &front, int time) {
 	}
 }
 
+inline int getDistance(int a, int b) {
+	return abs(a - b);
+}
+
 void fcfs(ofstream &out) {
 	int time = 0, header = 0, front = 0;
 	vector<Request> Queue;
@@ -42,7 +46,7 @@ void fcfs(ofstream &out) {
 		else {
 			while (!Queue.empty()) {
 				Request now = Queue.front(); Queue.erase(Queue.begin());
-				time += abs(header - now.head) + transmissionTime;
+				time += getDistance(header, now.head) + transmissionTime;
 				header = now.head;
 				push(Queue, front, time);
 			}
@@ -54,7 +58,7 @@ void fcfs(ofstream &out) {
 Request findNearRequest(vector<Request> &Queue, int header) {
 	int nearIndex = 0;
 	for (int i = 0; i < Queue.size(); i++) {
-		if (abs(Queue[nearIndex].head - header) > abs(Queue[i].head - header)) {
+		if (getDistance(Queue[nearIndex].head, header) > getDistance(Queue[i].head, header)) {
 			nearIndex = i;
 		}
 	}
@@ -73,7 +77,7 @@ void sstf(ofstream &out) {
 		else {
 			while (!Queue.empty()) {
 				Request now = findNearRequest(Queue, header);
-				time += abs(header - now.head) + transmissionTime;
+				time += getDistance(header, now.head) + transmissionTime;
 				header = now.head;
 				push(Queue, front, time);
 			}
@@ -106,7 +110,7 @@ Request findLookRequest(vector<Request> &Queue, int header, int &direction) {
 	if (direction == RIGHT) {
 		for (int i = 0; i < Queue.size(); i++) {
 			if (Queue[i].head >= header) {
-				if (abs(Queue[nearIndex].head - header) > abs(Queue[i].head - header)) {
+				if (getDistance(Queue[nearIndex].head, header) > getDistance(Queue[i].head, header)) {
 					nearIndex = i;
 				}
 
@@ -116,7 +120,7 @@ Request findLookRequest(vector<Request> &Queue, int header, int &direction) {
 	else {
 		for (int i = 0; i < Queue.size(); i++) {
 			if (Queue[i].head <= header) {
-				if (abs(Queue[nearIndex].head - header) > abs(Queue[i].head - header)) {
+				if (getDistance(Queue[nearIndex].head, header) > getDistance(Queue[i].head, header)) {
 					nearIndex = i;
 				}
 			}
@@ -137,7 +141,7 @@ void look(ofstream &out) {
 		else {
 			while (!Queue.empty()) {
 				Request now = findLookRequest(Queue, header, direction);
-				time += abs(header - now.head) + transmissionTime;
+				time += getDistance(header, now.head) + transmissionTime;
 				header = now.head;
 				push(Queue, front, time);
 			}
