@@ -18,7 +18,9 @@ void input(ifstream &inp) {
 	while (true) {
 		int time, head;
 		inp >> time >> head;
-		if (time == -1 && head == -1) { return; }
+		if (time == -1 && head == -1) { 
+			return;
+		}
 		request.push_back({ time, head });
 	}
 }
@@ -87,7 +89,6 @@ int checkDirection(vector<Request> &Queue, int header, int &direction) {
 				return RIGHT;
 			}
 		}
-		return LEFT;
 	}
 	else {
 		for (int i = 0; i < Queue.size(); i++) {
@@ -95,9 +96,8 @@ int checkDirection(vector<Request> &Queue, int header, int &direction) {
 				return LEFT;
 			}
 		}
-		return RIGHT;
 	}
-
+	return direction == RIGHT ? LEFT : RIGHT;
 }
 
 Request findLookRequest(vector<Request> &Queue, int header, int &direction) {
