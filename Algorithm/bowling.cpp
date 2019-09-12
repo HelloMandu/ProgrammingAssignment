@@ -9,7 +9,6 @@ bool isStrike(int score) {
 	return score == 10;
 }
 
-
 int main() {
 	ifstream inp("bowling.inp");
 	ofstream out("bowling.out");
