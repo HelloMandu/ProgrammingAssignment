@@ -7,7 +7,7 @@ string cube1, cube2;
 char maked[6];
 bool isVisit[6];
 int idx[3];
-int check[12][3] = { // ³ë°¡´Ù ÁË¼ÛÇÔµÂ;
+int check[12][3] = { // sorry labor;
 	{1, 2, 3},
 	{1, 3, 5},
 	{1, 5, 4},
