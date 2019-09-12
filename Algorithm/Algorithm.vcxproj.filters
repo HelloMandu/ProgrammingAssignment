@@ -30,12 +30,15 @@
     <ClCompile Include="paper.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="cube.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="paper.inp">
+    <None Include="cube.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="paper.out">
+    <None Include="cube.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
