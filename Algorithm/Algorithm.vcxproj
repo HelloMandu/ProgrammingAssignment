@@ -118,7 +118,10 @@
     <ClCompile Include="bowling.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="cube.cpp" />
+    <ClCompile Include="cube.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="inv.cpp" />
     <ClCompile Include="palindrome.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -133,8 +136,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="cube.inp" />
-    <None Include="cube.out" />
+    <None Include="inv.inp" />
+    <None Include="inv.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
