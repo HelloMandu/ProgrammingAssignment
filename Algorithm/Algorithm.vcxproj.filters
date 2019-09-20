@@ -36,12 +36,15 @@
     <ClCompile Include="inv.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="bitmap.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="inv.inp">
+    <None Include="bitmap.out">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="inv.out">
+    <None Include="bitmap.inp">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
