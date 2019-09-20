@@ -127,6 +127,7 @@
     <ClCompile Include="inv.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ladder.cpp" />
     <ClCompile Include="palindrome.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -141,8 +142,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bitmap.inp" />
-    <None Include="bitmap.out" />
+    <None Include="ladder.inp" />
+    <None Include="ladder.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

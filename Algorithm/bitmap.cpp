@@ -14,7 +14,6 @@ void input(ifstream &inp, FILE *out, char type) {
 	inp >> row >> col;
 	if (type == 'B') {
 		fprintf(out, "D%4d%4d", row, col);
-
 		for (int i = 0; i < row * col; i++) {
 			inp >> bit[i];
 		}

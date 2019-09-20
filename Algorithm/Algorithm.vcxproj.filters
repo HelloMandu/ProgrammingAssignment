@@ -39,12 +39,15 @@
     <ClCompile Include="bitmap.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ladder.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bitmap.out">
+    <None Include="ladder.out">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="bitmap.inp">
+    <None Include="ladder.inp">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
