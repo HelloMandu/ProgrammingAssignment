@@ -45,14 +45,12 @@ void bfs(int i, int j) {
 				}
 			}
 		}
-		else {
-			if (color != MIX) {
-				if (color == NONE) {
-					color = map[y][x];
-				}
-				else if (color != map[y][x]) {
-					color = MIX;
-				}
+		else if (color != MIX) {
+			if (color == NONE) {
+				color = map[y][x];
+			}
+			else if (color != map[y][x]) {
+				color = MIX;
 			}
 		}
 		Queue.pop();
@@ -76,8 +74,8 @@ void countHome() {
 }
 
 int main() {
-	ifstream inp("go.inp");
-	ofstream out("go.out");
+	ifstream inp("pandora.inp");
+	ofstream out("pandora.out");
 	input(inp);
 	countHome();
 	out << black << ' ' << white;
