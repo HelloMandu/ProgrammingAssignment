@@ -42,12 +42,21 @@
     <ClCompile Include="ladder.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="pole.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="go.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="pandora.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ladder.out">
+    <None Include="pandora.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="ladder.inp">
+    <None Include="pandora.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
