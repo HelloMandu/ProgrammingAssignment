@@ -51,12 +51,18 @@
     <ClCompile Include="pandora.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="card1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="card2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="pandora.inp">
+    <None Include="card.out">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="pandora.out">
+    <None Include="card.inp">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
