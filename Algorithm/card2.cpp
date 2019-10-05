@@ -1,26 +1,35 @@
 #include<fstream>
 #include<algorithm>
+#include<cstring>
 using namespace std;
 
-int alice[10001][10001], robot[10001][10001];
+int card[1001], cache[2][1001][1001];
+
+int solution(int start, int end, bool turn) {
+	int &ret = cache[turn][start][end];
+	if (ret != -1) {
+		return ret;
+	}
+	else if (start == end) {
+		return ret = turn ? card[start] : 0;
+	}
+	return ret = turn ? max((solution(start + 1, end, !turn) + card[start]), (solution(start, end - 1, !turn) + card[end]))
+		: min((solution(start + 1, end, !turn)), (solution(start, end - 1, !turn)));
+}
+
 int main() {
 	ifstream inp("card.inp");
 	ofstream out("card.out");
 	int testcase;
 	inp >> testcase;
 	while (testcase--) {
+		memset(cache, -1, sizeof(cache));
 		int n;
 		inp >> n;
 		for (int i = 0; i < n; i++) {
-			inp >> alice[i][i];
+			inp >> card[i];
 		}
-		for (int j = 1; j < n; j++) {
-			for (int i = 0; i + j < n; i++) {
-				robot[i][j + i] = min(alice[i][j + i - 1], alice[i + 1][j + i]);
-				alice[i][j + i] = (alice[i][j + i - 1] + robot[i][j + i - 1] + alice[j + i][j + i]) - robot[i][j + i];
-			}
-		}
-		out << alice[0][n - 1] << '\n';
+		out << solution(0, n - 1, true) << '\n';
 	}
 	return 0;
 }
