@@ -57,12 +57,15 @@
     <ClCompile Include="card2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="coin.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="card.out">
+    <None Include="card.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="card.inp">
+    <None Include="card.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
