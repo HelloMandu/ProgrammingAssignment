@@ -13,8 +13,13 @@ int solution(int start, int end, bool turn) {
 	else if (start == end) {
 		return ret = turn ? card[start] : 0;
 	}
-	return ret = turn ? max((solution(start + 1, end, !turn) + card[start]), (solution(start, end - 1, !turn) + card[end]))
-		: min((solution(start + 1, end, !turn)), (solution(start, end - 1, !turn)));
+	if (turn) {
+		ret = max(solution(start + 1, end, !turn) + card[start], solution(start, end - 1, !turn) + card[end]);
+	}
+	else {
+		ret = min(solution(start + 1, end, !turn), solution(start, end - 1, !turn));
+	}
+	return ret;
 }
 
 int main() {
