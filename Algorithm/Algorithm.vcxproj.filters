@@ -60,12 +60,18 @@
     <ClCompile Include="coin.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="cube2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="coinmove.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="card.inp">
+    <None Include="coinmove.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="card.out">
+    <None Include="coinmove.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
