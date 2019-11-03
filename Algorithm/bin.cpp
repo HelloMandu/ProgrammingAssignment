@@ -16,7 +16,7 @@ int main() {
 	inp >> testcase;
 	while (testcase--) {
 		inp >> n >> m;
-		for (int i = 0; i <= n; i++) {
+		for (int i = 1; i <= n; i++) {
 			for (int j = 0; j <= m; j++) {
 				cache[i][j] = INFINITY;
 			}
@@ -30,9 +30,6 @@ int main() {
 			for (int j = i; j <= n; j++) {
 				distanceSum[i][j] = distanceSum[i][j - 1] + home[j] - home[i + (j - i) / 2];
 			}
-		}
-		for (int i = 0; i <= m; i++) {
-			cache[0][i] = 0;
 		}
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= m; j++) {
