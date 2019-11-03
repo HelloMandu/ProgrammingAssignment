@@ -33,7 +33,7 @@ int main() {
 		/*집의 위치대로 정렬*/
 		sort(home + 1, home + n + 1);
 
-		/*수집통을 하나만 썻을 때 최솟값*/
+		/*i ~ j범위의 집들을 수집통 하나만 썻을 때 최솟값*/
 		for (int i = 1; i <= n; i++) { 
 			for (int j = i; j <= n; j++) {
 				distanceSum[i][j] = distanceSum[i][j - 1] + home[j] - home[i + (j - i) / 2];
