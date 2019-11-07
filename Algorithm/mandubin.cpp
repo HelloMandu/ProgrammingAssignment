@@ -1,4 +1,4 @@
-ï»¿#include<fstream>
+#include<fstream>
 #include<algorithm>
 #include<cstring>
 #define INFINITY 987654321
@@ -30,20 +30,21 @@ int main() {
 			inp >> home[i];
 		}
 
-		/*ì§‘ì˜ ìœ„ì¹˜ëŒ€ë¡œ ì •ë ¬*/
+		/*ÁıÀÇ À§Ä¡´ë·Î Á¤·Ä*/
 		sort(home + 1, home + n + 1);
 
-		for (int i = 1; i <= n; i++) {
+		/*i ~ j¹üÀ§ÀÇ ÁıµéÀ» ¼öÁıÅë ÇÏ³ª¸¸ ›§À» ¶§ ÃÖ¼Ú°ª*/
+		for (int i = 1; i <= n; i++) { 
 			for (int j = i; j <= n; j++) {
 				distanceSum[i][j] = distanceSum[i][j - 1] + home[j] - home[i + (j - i) / 2];
 			}
 		}
 
-		/*iê°œì˜ ì§‘ì„ jê°œì˜ ìˆ˜ì§‘í†µìœ¼ë¡œ ë°°ì¹˜í–ˆì„ ë•Œ ìµœì†Ÿê°’*/
+		/*i°³ÀÇ ÁıÀ» j°³ÀÇ ¼öÁıÅëÀ¸·Î ¹èÄ¡ÇßÀ» ¶§ ÃÖ¼Ú°ª*/
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= m; j++) {
 				for (int k = 1; k <= i; k++) {
-					cache[i][j] = min(cache[i][j], cache[k - 1][j - 1] + distanceSum[k][i]);
+					cache[i][j] = min(cache[i][j], cache[i - k][j - 1] + distanceSum[i - k + 1][i]);
 				}
 			}
 		}
@@ -52,3 +53,6 @@ int main() {
 	inp.close(); out.close();
 	return 0;
 }
+
+
+

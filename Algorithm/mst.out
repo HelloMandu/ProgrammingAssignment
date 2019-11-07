@@ -1,0 +1,28 @@
+Tree edges by Kruskal algorithm: 72
+5
+14
+19
+11
+17
+8
+Tree edges by Prim algorithm with starting vertex 0: 72
+19
+11
+14
+5
+17
+8
+Tree edges by Prim algorithm with starting vertex 3: 72
+8
+5
+14
+11
+19
+17
+Tree edges by Prim algorithm with starting vertex 6: 72
+5
+14
+11
+19
+17
+8
