@@ -12,10 +12,6 @@ struct Square {
 	int dir[4], water;
 };
 
-struct Location {
-	int row, col, hole;
-};
-
 int n, m, h;
 int dy[4] = { -1, 0, 1, 0 };
 int dx[4] = { 0, 1, 0, -1 };
