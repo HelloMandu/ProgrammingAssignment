@@ -1,9 +1,6 @@
 #include<fstream>
 #include<algorithm>
-#include<queue>
-#include<vector>
 #include<cstring>
-#define INF 987654321
 using namespace std;
 
 enum Direction{ north, east, south, west }; // ºÏµ¿³²¼­

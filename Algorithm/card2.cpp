@@ -5,19 +5,19 @@ using namespace std;
 
 int card[1001], cache[2][1001][1001];
 
-int solution(int start, int end, bool turn) {
-	int &ret = cache[turn][start][end];
+int solution(int start, int finish, bool turn) {
+	int &ret = cache[turn][start][finish];
 	if (ret != -1) {
 		return ret;
 	}
-	else if (start == end) {
+	else if (start == finish) {
 		return ret = turn ? card[start] : 0;
 	}
 	if (turn) {
-		ret = max(solution(start + 1, end, !turn) + card[start], solution(start, end - 1, !turn) + card[end]);
+		ret = max(solution(start + 1, finish, !turn) + card[start], solution(start, finish - 1, !turn) + card[finish]);
 	}
 	else {
-		ret = min(solution(start + 1, end, !turn), solution(start, end - 1, !turn));
+		ret = min(solution(start + 1, finish, !turn), solution(start, finish - 1, !turn));
 	}
 	return ret;
 }

@@ -93,12 +93,15 @@
     <ClCompile Include="watertank.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="watertank.inp">
+    <None Include="light.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="watertank.out">
+    <None Include="light.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
