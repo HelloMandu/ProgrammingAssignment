@@ -1,0 +1,40 @@
+2
+0 9 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+4 0 2 0 3 0 0 0 0
+8 0 0 0 0 0 6 0 0
+5 0 8 0 0 0 0 4 0
+7 0 0 0 0 5 8 3 6
+0 0 3 1 0 0 2 0 0
+0 0 0 0 0 0 5 0 0
+0 0 4 0 0 0 0 8 0
+
+c b b b b b b a a
+c b e e e a a a a
+c b e d e e a a a
+c b e d d e e f f
+c d d d d h h h f
+c c c d d h h h f
+i i c i i h h h f
+i i i i i g g g f
+g g g g g g f f f
+
+0 0 0 0 0 0 0 0 0
+0 0 1 0 7 0 0 0 0
+7 0 0 0 4 0 0 9 0
+0 0 0 3 0 0 4 0 0
+0 0 3 0 0 8 0 6 0
+0 0 7 5 3 0 6 0 4
+5 0 0 0 9 2 0 0 0
+3 0 2 6 5 0 0 0 7
+0 0 0 0 0 0 2 0 0
+
+i i e e e e d c a
+h i e e d d d c a
+h i e e d d d c a
+h i i e d d c c a
+h i i g g c c a a
+h i g g f c c a b
+h g g f f f a a b
+h g g f f f b b b
+h h g f f b b b b

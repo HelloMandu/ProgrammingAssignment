@@ -96,12 +96,15 @@
     <ClCompile Include="light.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="sudoku.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="light.inp">
+    <None Include="sudoku.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="light.out">
+    <None Include="sudoku.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
