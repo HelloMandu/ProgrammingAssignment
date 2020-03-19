@@ -15,15 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="p100.inp">
+    <None Include="Droppingballs.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="p100.out">
+    <None Include="Droppingballs.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3n+1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Trip.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Droppingballs.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
