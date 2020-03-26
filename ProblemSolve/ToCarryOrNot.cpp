@@ -45,8 +45,7 @@ uInt binaryToDecimal(string &bn) {
 int main() {
 	ifstream inp("ToCarryOrNot.inp");
 	ofstream out("ToCarryOrNot.out");
-	string bn1, bn2;
-	string bResult;
+	string bn1, bn2, bResult;
 	uInt n1, n2;
 	while (inp >> n1 >> n2) {
 		bn1 = decimalToBinary(n1), bn2 = decimalToBinary(n2);

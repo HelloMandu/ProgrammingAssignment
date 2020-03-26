@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ToCarryOrNot.out">
+    <None Include="Doublets.out">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="ToCarryOrNot.inp">
+    <None Include="Doublets.inp">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
@@ -36,6 +36,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ToCarryOrNot.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Doublets.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -13,6 +13,7 @@ int dy[8] = { 0, -1, -1, -1, 0, 1, 1, 1 };
 int dx[8] = { 1, 1, 0, -1, -1, -1, 0, 1 };
 
 void setStr() {
+	inp >> str;
 	for (int i = 0; i < str.size(); i++) {
 		if (str[i] >= 'A' && str[i] <= 'Z') {
 			str[i] += 32;
@@ -76,7 +77,6 @@ int main() {
 		int count;
 		inp >> count;
 		while (count--) {
-			inp >> str;
 			setStr();
 			findStr();
 		}

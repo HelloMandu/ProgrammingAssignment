@@ -126,6 +126,7 @@
     <ClCompile Include="3n+1.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Doublets.cpp" />
     <ClCompile Include="Droppingballs.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -140,8 +141,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ToCarryOrNot.inp" />
-    <None Include="ToCarryOrNot.out" />
+    <None Include="Doublets.inp" />
+    <None Include="Doublets.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
