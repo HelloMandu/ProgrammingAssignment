@@ -15,27 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ToCarryOrNot.out">
-      <Filter>리소스 파일</Filter>
-    </None>
-    <None Include="ToCarryOrNot.inp">
-      <Filter>리소스 파일</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="3n+1.cpp">
+    <ClCompile Include="test.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Trip.cpp">
+    <ClCompile Include="star.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Droppingballs.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Waldorf.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ToCarryOrNot.cpp">
+    <ClCompile Include="face.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
