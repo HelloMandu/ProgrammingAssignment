@@ -19,19 +19,10 @@ of colors among these edges.
 
 struct Node {
 	int num, parent, color;
-	vector<Node*> child;
 };
 
-Node *forest;
 Node nodes[500001];
 bool isVisit[500001];
-
-void makeTree(int n) {
-	forest = &nodes[0];
-	for (int i = 1; i <= n; i++) {
-		nodes[nodes[i].parent].child.push_back(&nodes[i]);
-	}
-}
 
 bool isParent(int x, int y) {
 	if (y == 0) {
@@ -45,15 +36,8 @@ bool isParent(int x, int y) {
 
 void changeParent(int x, int y, int c) {
 	if (x != y && !isParent(x, y)) {
-		for (int i = 0; i < nodes[nodes[x].parent].child.size(); i++) {
-			if (nodes[nodes[x].parent].child[i]->num == x) {
-				nodes[nodes[x].parent].child.erase(nodes[nodes[x].parent].child.begin() + i);
-				nodes[x].parent = y;
-				nodes[x].color = c;
-				nodes[y].child.push_back(&nodes[x]);
-				return;
-			}
-		}
+		nodes[x].parent = y;
+		nodes[x].color = c;
 	}
 }
 
@@ -102,8 +86,8 @@ void operation(ofstream &out, int n, int type, int x, int y, int c) {
 	case 3:
 		set<int> colors;
 		if (sameParent) {
-			edges += countPath(colors, x, sameParent);
-			edges += countPath(colors, y, sameParent);
+			edges = countPath(colors, x, sameParent)
+				+ countPath(colors, y, sameParent);
 		}
 		out << edges << ' ' << colors.size() << '\n';
 		return;
@@ -122,7 +106,6 @@ int main() {
 	for (int i = 1; i <= n; i++) {
 		inp >> nodes[i].color;
 	}
-	makeTree(n);
 	while (m--) {
 		int type, x, y, c = 0;
 		inp >> type;
