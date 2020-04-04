@@ -18,7 +18,7 @@ of colors among these edges.
 */
 
 struct Node {
-	int num, parent, color;
+	int parent, color;
 };
 
 Node nodes[500001];
@@ -101,7 +101,6 @@ int main() {
 	inp >> n >> m;
 	for (int i = 1; i <= n; i++) {
 		inp >> nodes[i].parent;
-		nodes[i].num = i;
 	}
 	for (int i = 1; i <= n; i++) {
 		inp >> nodes[i].color;
