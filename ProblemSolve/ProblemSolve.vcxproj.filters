@@ -15,14 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Doublets.out">
-      <Filter>리소스 파일</Filter>
-    </None>
-    <None Include="Doublets.inp">
-      <Filter>리소스 파일</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="3n+1.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -41,5 +33,22 @@
     <ClCompile Include="Doublets.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Slurpys.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TheSnail.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="HappyPainting.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HappyPainting.inp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="HappyPainting.out">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

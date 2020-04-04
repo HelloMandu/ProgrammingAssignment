@@ -126,8 +126,17 @@
     <ClCompile Include="3n+1.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Doublets.cpp" />
+    <ClCompile Include="Doublets.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Droppingballs.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="HappyPainting.cpp" />
+    <ClCompile Include="Slurpys.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="TheSnail.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ToCarryOrNot.cpp">
@@ -141,8 +150,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Doublets.inp" />
-    <None Include="Doublets.out" />
+    <None Include="HappyPainting.inp" />
+    <None Include="HappyPainting.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
