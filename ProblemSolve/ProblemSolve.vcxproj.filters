@@ -42,12 +42,21 @@
     <ClCompile Include="HappyPainting.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ConvexHull.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="point.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="tangent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HappyPainting.inp">
+    <None Include="tangent.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="HappyPainting.out">
+    <None Include="tangent.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
