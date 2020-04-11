@@ -57,8 +57,8 @@ void printConvexHull(ofstream &out) {
 }
 
 int main() {
-	ifstream inp("ConvexHull.inp");
-	ofstream out("ConvexHull.out");
+	ifstream inp("tangent.inp");
+	ofstream out("tangent.out");
 	int n;
 	inp >> n;
 	for (int i = 0; i < n; i++) {
