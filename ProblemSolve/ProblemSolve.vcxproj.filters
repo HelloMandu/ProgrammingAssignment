@@ -51,12 +51,18 @@
     <ClCompile Include="tangent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="rectangle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="tangent2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="tangent.inp">
+    <None Include="tangent2.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="tangent.out">
+    <None Include="tangent2.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>

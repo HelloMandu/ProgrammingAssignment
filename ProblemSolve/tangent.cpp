@@ -11,9 +11,6 @@ typedef long long lint;
 struct Point {
 	lint y, x, dy, dx, n;
 	char polygon;
-	Point() {}
-	Point(lint y, lint x, char polygon, lint n) :Point(y, x, 0, 0, polygon, n) {}
-	Point(lint y, lint x, lint dy, lint dx, char polygon, lint n) : y(y), x(x), dy(dy), dx(dx), polygon(polygon), n(n) {}
 
 	bool operator<(const Point &a) {
 		if (dy * a.dx != dx * a.dy) {
