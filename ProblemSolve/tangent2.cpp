@@ -100,17 +100,15 @@ void closestPoint(int &p, int &q) {
 }
 
 void findPointPtoQ() {
-	while (true) {
-		bool flagP = false, flagQ = false;
+	bool flagP, flagQ;
+	do {
+		flagP = false, flagQ = false;
 		for (int i = 0; i < qHull.size(); i++) {
 			if (ccw(pHull[pTop], qHull[i], qHull[qBottom]) > 0) {
 				flagQ = true;
 				qBottom = (qBottom  + qHull.size() - 1) % qHull.size();
 				break;
 			}
-		}
-		if (flagQ) {
-			continue;
 		}
 		for (int i = 0; i < pHull.size(); i++) {
 			if (ccw(qHull[qBottom], pHull[i], pHull[pTop]) > 0) {
@@ -119,27 +117,21 @@ void findPointPtoQ() {
 				break;
 			}
 		}
-		if (flagP) {
-			continue;
-		}
-		break;
-	}
+	} while (flagP || flagQ);
 	closestPoint(pTop, qBottom);
 	pTop = pHull[pTop].n, qBottom = qHull[qBottom].n;
 }
 
 void findPointQtoP() {
-	while (true) {
-		bool flagP = false, flagQ = false;
+	bool flagP, flagQ;
+	do {
+		flagP = false, flagQ = false;
 		for (int i = 0; i < pHull.size(); i++) {
 			if (ccw(qHull[qTop], pHull[i], pHull[pBottom]) < 0) {
 				flagP = true;
 				pBottom = (pBottom + 1) % pHull.size();
 				break;
 			}
-		}
-		if (flagP) {
-			continue;
 		}
 		for (int i = 0; i < qHull.size(); i++) {
 			if (ccw(pHull[pBottom], qHull[i], qHull[qTop]) < 0) {
@@ -148,11 +140,7 @@ void findPointQtoP() {
 				break;
 			}
 		}
-		if (flagQ) {
-			continue;
-		}
-		break;
-	}
+	} while (flagP || flagQ);
 	closestPoint(pBottom, qTop);
 	pBottom = pHull[pBottom].n, qTop = qHull[qTop].n;
 }

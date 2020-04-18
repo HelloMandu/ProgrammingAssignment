@@ -57,12 +57,15 @@
     <ClCompile Include="tangent2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="tree.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="tangent2.inp">
+    <None Include="tree.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="tangent2.out">
+    <None Include="tree.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
