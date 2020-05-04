@@ -124,8 +124,8 @@ void MyDisplay() {
 	glutSwapBuffers();
 }
 void MyTimer(int Value) {
-	gSecondHand -= 1;
-	if (gSecondHand % 60 == 0) { gMinuteHand -= 1; }
+	gMinuteHand -= 1;
+	if (gMinuteHand % 30 == 0) { gSecondHand -= 1; }
 	glutPostRedisplay();
 	glutTimerFunc(20, MyTimer, 1);
 }
