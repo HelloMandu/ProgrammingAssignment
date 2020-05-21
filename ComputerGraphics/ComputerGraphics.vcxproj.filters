@@ -45,5 +45,8 @@
     <ClCompile Include="Maximus.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="robot.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

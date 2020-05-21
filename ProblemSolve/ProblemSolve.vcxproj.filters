@@ -78,12 +78,39 @@
     <ClCompile Include="service.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="scc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="mult.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="rbt.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="show.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="area.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="doona.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="gooza.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="treee.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="factory.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="mice.out">
+    <None Include="factory.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="mice.inp">
+    <None Include="factory.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
