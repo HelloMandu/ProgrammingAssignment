@@ -42,6 +42,13 @@ LEFT and RIGHT : moving-X
    -> 배열 선언 시 안에 변수가 들어있으면 그건 선언 당시 변수의 값이 들어있는거랑 동일, 전역변수로 선언하면 그냥 0이 들어있는거랑 동일, 지역변수면 함수 호출시마다 배열이 선언되므로
    special함수에서 바뀐 값이 초기값으로 들어가게 됨
 (7) 다리에만 전단
+
+9주차
+ - 전역변수 6개 추가
+ - YourFlower함수를 전체적으로 glTranslatef(gFlowerX, gFlowerY, 0) 추가
+ - MyMotion 함수
+ - MyReshape함수에서 지역변수 4개를 전역변수에 넣어줌
+ - glutMotionFunc호출
 -------------------------------------------------------------*/
 
 #include <glut.h>
@@ -59,6 +66,10 @@ GLfloat gRedarmlength = 1; // 빨간팔의 길이
 GLfloat gShear = 0.0, gShearleg = 0.0; // 7-(5), 7-(7)
 GLfloat gFlowerShear = 0.0, gRootShear = 0.0; // 꽃 전단
 
+GLfloat gFlowerX = -2.8, gFlowerY = -1.5;
+GLint gNewWidth, gNewHeight;
+GLfloat gWidthFactor, gHeightFactor;
+
 void MyBackground();
 void MyMat();
 void MyFace();
@@ -69,8 +80,7 @@ void MyFlower();
 void MyFlower() {
 	// 꽃의 윗부분
 	glColor3f(1.0, 1.0, 0.0);
-	glPushMatrix();
-	glTranslatef(-2.8, -1.5, 0);
+	glTranslatef(gFlowerX, gFlowerY, 0);
 	glScalef(4, 4, 0);
 	glBegin(GL_POLYGON);
 	for (GLfloat Angle = 0.0; Angle <= 2.0*Pi; Angle += Pi / 20.0)
@@ -97,7 +107,6 @@ void MyFlower() {
 	for (GLfloat Angle = 0.0; Angle <= 2.0*Pi; Angle += Pi / 20.0)
 		glVertex3f(0.04*cos(Angle), 0.04*sin(Angle), 0.0);
 	glEnd();
-	glPopMatrix();
 
 	// 꽃의 아랫부분
 
@@ -108,19 +117,21 @@ void MyFlower() {
 	   {0,0,1,0},
 	   {0,0,0,1},
 	};
-	glTranslatef(-2.8, -1.65, 0);
+	glTranslatef(0, -0.04, 0);
+
 	glMultMatrixf((float*)flowerRoot_arr);
-	glTranslatef(2.8, 1.65, 0);
+	glTranslatef(0, 0.04, 0);
 
 	glColor3f(1, 1, 1);
 	glLineWidth(4);
 	glBegin(GL_LINES);
-	glVertex3f(-2.8, -1.65, 0);
-	glVertex3f(-2.8, -2.3, 0); 
-	glEnd();
+	glVertex3f(0, -0.04, 0);
+	glVertex3f(0, -0.2, 0); 
+	glEnd(); 
 	glLineWidth(1);
 	glPopMatrix();
-}
+} 
+
 void MyDisplay() {
 	// 아래 세개는 항상 고정
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -178,6 +189,7 @@ void MyDisplay() {
 	glutSwapBuffers();
 
 } // MyDisplay
+
 void MyBackground() {
 
 	glColor3f(0, 1, 1); // sky 
@@ -199,6 +211,7 @@ void MyBackground() {
 	glEnd();
 
 }
+
 void MyMat() {
 
 	glColor3f(0xE4 / 255.0, 0xBE / 255.0, 0xFE / 255.0); // 연보라색   
@@ -210,6 +223,7 @@ void MyMat() {
 	glEnd();
 
 } // MyMat
+
 void MyFace() {
 
 	glColor3f(251 / 255.0, 206 / 255.0, 177 / 255.0); // 살구색
@@ -220,6 +234,7 @@ void MyFace() {
 	glPopMatrix(); // push를 했으면 pop
 
 } // MyFace 
+
 void MyEyeMouth() {
 
 	if (gFace == 'a') {  // angry
@@ -275,6 +290,7 @@ void MyEyeMouth() {
 	}
 
 } // MyEyeMouth
+
 void MyBody() {
 
 	glColor3f(0, 0, 0); // black neck
@@ -373,6 +389,7 @@ void MyBody() {
 	glLineWidth(1);  // line
 
 } // MyBody
+
 void MyKeyboard(unsigned char key, int x, int y) {
 
 	switch (key) {
@@ -452,17 +469,26 @@ void MySpecial(int key, int x, int y) {
 	glutPostRedisplay();
 
 } // MySpecial
+
+void MyMotion(GLint X, GLint Y) {
+	gFlowerX = (GLfloat)X / gNewWidth * 8 * gWidthFactor - 4 * gWidthFactor;
+	gFlowerY = (GLfloat)(gNewHeight - Y) / gNewHeight * 6 * gHeightFactor - 3  * gHeightFactor;
+	glutPostRedisplay();
+} // MyMotion
+
 void MyReshape(int NewWidth, int NewHeight) {
 
 	glViewport(0, 0, NewWidth, NewHeight);
 	GLfloat WidthFactor = (GLfloat)NewWidth / (GLfloat)WIN_WIDTH;
 	GLfloat HeightFactor = (GLfloat)NewHeight / (GLfloat)WIN_HEIGHT;
-
+	gWidthFactor = WidthFactor, gHeightFactor = HeightFactor;
+	gNewWidth = NewWidth, gNewHeight = NewHeight;
 	glMatrixMode(GL_PROJECTION); // reshape에는 projection
 	glLoadIdentity();
 	glOrtho(-4.0 * WidthFactor, 4.0 * WidthFactor, -3.0 * HeightFactor, 3.0 * HeightFactor, -4.0, 4.0); // z축은 x랑 같은걸로 고정
 
 } // MyReshape
+
 void MyInit() {
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 
@@ -481,7 +507,7 @@ int main(int argc, char** argv) {
 	glutReshapeFunc(MyReshape);
 	glutKeyboardFunc(MyKeyboard);
 	glutSpecialFunc(MySpecial);
-
+	glutMotionFunc(MyMotion);
 	glutMainLoop();
 	return 0;
 }

@@ -48,5 +48,8 @@
     <ClCompile Include="robot.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ball.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

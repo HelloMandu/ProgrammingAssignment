@@ -105,12 +105,15 @@
     <ClCompile Include="factory.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="crt.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="factory.inp">
+    <None Include="crt.out">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="factory.out">
+    <None Include="crt.inp">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
