@@ -10,7 +10,7 @@ struct Operation {
 Operation oper[51];
 int n;
 
-lint getGcd(lint a, lint b) { // a°¡ ´õ Å­
+lint getGcd(lint a, lint b) {
 	return b ? getGcd(b, a % b) : a;
 }
 

@@ -108,12 +108,15 @@
     <ClCompile Include="crt.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ones.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="crt.out">
+    <None Include="ones.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="crt.inp">
+    <None Include="ones.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
