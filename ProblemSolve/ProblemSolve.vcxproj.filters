@@ -111,12 +111,18 @@
     <ClCompile Include="ones.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="shoemaker.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="transform.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ones.inp">
+    <None Include="transform.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="ones.out">
+    <None Include="transform.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>

@@ -49,6 +49,15 @@ LEFT and RIGHT : moving-X
  - MyMotion 함수
  - MyReshape함수에서 지역변수 4개를 전역변수에 넣어줌
  - glutMotionFunc호출
+
+ 10주차
+  - menu추가 day, night (바탕색, 하늘, 초원, 매트, 얼굴 톤 다움)
+   - timer추가 rain표현(재귀함수의 특성을 이용해서 비내리는 밤 표현)
+
+   11주차
+    - mat를 polygon으로 펼쳤는데 glOrtho로하면 안보이는 이유 : 폴리곤은 두께가 없으므로 정사투영에서 바로보는 면이 안보임(원근으로해야함)
+	- 꽃을 motion으로 움직이면 전단할 때 발끝고정이 안되는 이유 : 전단 중심 y값을 절대적인 위치로 넣었기 때문에 움직인 후에는 발끝고정이 안됨 -> 꽃의 상대적인 위치로 바꿔줌
+	- glOrtho일 때 잘되던 motion이, 원근 넣으니까 마우스위치랑 조금 다르게 보이는 이유 : 앞 영상에서 눈/잎을 z값 양의 방향 위에 있는 것처럼 보이는 것과 같은 이치 (z값이 다르기때문에 달라보임)
 -------------------------------------------------------------*/
 
 #include <glut.h>
@@ -60,6 +69,8 @@ LEFT and RIGHT : moving-X
 unsigned char gFace = 'u';   // u:usual  a:angry   s:smiling
 GLfloat gY = 0.0;  // jump
 GLfloat gX = 0.0;  // moving-X
+GLfloat gZ= 0.0;  // 앞뒤이동
+
 GLfloat gBlueleg = 0.0, gBlackleg = 0.0; // 회전각도
 GLfloat gRedforearm = 0.0, gBlackforearm = 0.0, gRedupperarm = 0.0, gBlackupperarm = 0.0; // 회전각도
 GLfloat gRedarmlength = 1; // 빨간팔의 길이
@@ -69,6 +80,8 @@ GLfloat gFlowerShear = 0.0, gRootShear = 0.0; // 꽃 전단
 GLfloat gFlowerX = -2.8, gFlowerY = -1.5;
 GLint gNewWidth, gNewHeight;
 GLfloat gWidthFactor, gHeightFactor;
+unsigned char gBackground = 'D';
+GLint gTimeslot = 0;
 
 void MyBackground();
 void MyMat();
@@ -77,9 +90,31 @@ void MyEyeMouth();
 void MyBody();
 void MyFlower();
 
+void MyUmbrella() {
+	if (gBackground == 'R') {
+		glPushMatrix();
+		glTranslatef(-0.5, 1.5, 0);
+		glColor3f(1.0, 1.0, 1.0);
+		glLineWidth(4);
+		glBegin(GL_LINES);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, -1.5, 0);
+		glEnd();
+		glPushMatrix();
+		glColor3f(1.0, 1.0, 0.0);
+		glRotatef(-90, 1, 0, 0);
+		glutSolidCone(1.2, 0.8, 12, 12);
+		glRotatef(90, 0, 1, 0);
+		glPopMatrix();
+		glPopMatrix();
+		gBlackupperarm = 0;
+		gBlackforearm = -50;
+	}
+}
+
 void MyFlower() {
 	// 꽃의 윗부분
-	glColor3f(1.0, 1.0, 0.0);
+	glColor3f(1.0, 1.0, 0.0); 
 	glTranslatef(gFlowerX, gFlowerY, 0);
 	glScalef(4, 4, 0);
 	glBegin(GL_POLYGON);
@@ -109,7 +144,6 @@ void MyFlower() {
 	glEnd();
 
 	// 꽃의 아랫부분
-
 	glPushMatrix();
 	GLfloat flowerRoot_arr[4][4] = {
 	   {1,0,0,0},
@@ -118,7 +152,6 @@ void MyFlower() {
 	   {0,0,0,1},
 	};
 	glTranslatef(0, -0.04, 0);
-
 	glMultMatrixf((float*)flowerRoot_arr);
 	glTranslatef(0, 0.04, 0);
 
@@ -134,12 +167,15 @@ void MyFlower() {
 
 void MyDisplay() {
 	// 아래 세개는 항상 고정
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW); // display는 Modelview
 	glLoadIdentity();
+	//gluLookAt(0, 0, 5,  0, 0, 0,  0, 1, 0); // 무대 z값 범위는 -3, 5
 
 	//glScalef(1, -1, 1); // 2d에서 x축에 대한 반사
 	//glScalef(-1, 1, 1); // 2d에서 y축에 대한 반사
+
+	glTranslatef(0, 0, -5);
 
 	MyBackground();
 	MyMat();
@@ -152,7 +188,7 @@ void MyDisplay() {
 	// 여기서부터는 Maximus
 	//glTranslatef(2, 0, 0); // y=x에 대한 반사
 	glPushMatrix();
-	glTranslatef(gX, gY, 0); // left, right, jump
+	glTranslatef(gX, gY, gZ); // left, right, jump, 앞뒤
 	GLfloat Shear_arr[4][4] = {
 	   {1,0,0,0},
 	   {gShear,1,0,0},
@@ -162,12 +198,10 @@ void MyDisplay() {
 	glTranslatef(0, -1, 0); // 막시무스의 발끝
 	glMultMatrixf((float*)Shear_arr);
 	glTranslatef(0, 1, 0);
-	glPushMatrix();
 	MyFace();
-	glPopMatrix();
-
 	MyEyeMouth();
 	MyBody();
+	MyUmbrella();
 	glPopMatrix();
 
 	// 전단만 따라하는 작은 무언가
@@ -178,9 +212,9 @@ void MyDisplay() {
 	   {0,0,1,0},
 	   {0,0,0,1},
 	};
-	glTranslatef(-2.8, -2.3, 0);
+	glTranslatef(gFlowerX, gFlowerY - 0.8, 0);
 	glMultMatrixf((float*)Flower_arr);
-	glTranslatef(2.8, 2.3, 0);
+	glTranslatef(-gFlowerX, -gFlowerY + 0.8, 0);
 	glPushMatrix();
 	MyFlower();
 	glPopMatrix();
@@ -191,43 +225,87 @@ void MyDisplay() {
 } // MyDisplay
 
 void MyBackground() {
-
-	glColor3f(0, 1, 1); // sky 
-
-	glBegin(GL_POLYGON);
-	glVertex3f(-4, 0, -4);
-	glVertex3f(4, 0, -4);
-	glVertex3f(4, 3, -4);
-	glVertex3f(-4, 3, -4);
-	glEnd();
-
-	glColor3f(0, 1, 0); // green 
+	
+	if (gBackground == 'D') {
+		glColor3f(0, 1, 1); // sky 
+	}
+	else {
+		glColor3f(0.2, 0.2, 0.2); // sky 
+	}
 
 	glBegin(GL_POLYGON);
-	glVertex3f(-4, -3, -4);
-	glVertex3f(4, -3, -4);
-	glVertex3f(4, 0, -4);
-	glVertex3f(-4, 0, -4);
+	glVertex3f(-10, 0, -3.9);
+	glVertex3f(10, 0, -3.9);
+	glVertex3f(10, 8, -3.9);
+	glVertex3f(-10, 8, -3.9);
 	glEnd();
 
+	if (gBackground == 'D') {
+		glColor3f(0, 1, 0); // green 
+	}
+	else {
+		glColor3f(0, 0.3, 0); // green 
+	}
+
+	glBegin(GL_POLYGON);
+	glVertex3f(-10, -8, -3.9);
+	glVertex3f(10, -8, -3.9);
+	glVertex3f(10, 0, -3.9);
+	glVertex3f(-10, 0, -3.9);
+	glEnd();
+
+	if (gBackground == 'R') {
+		glColor3f(0.9, 0.9, 0.9); // 비 색
+		if (gTimeslot % 3 == 0) {
+			glBegin(GL_LINES);
+			glVertex3f(-3, 2, 0); glVertex3f(-3, 1.8, 0);
+			glVertex3f(3.3, 2.8, 0); glVertex3f(3.3, 2.6, 0);
+			glEnd();
+		}
+		else if (gTimeslot % 3 == 1) {
+			glBegin(GL_LINES);
+			glVertex3f(0, 2.7, 0); glVertex3f(0, 2.5, 0);
+			glEnd();
+		}
+		else {
+			glBegin(GL_LINES);
+			glVertex3f(-1, 1.7, 0); glVertex3f(-1, 1.5, 0);
+			glVertex3f(2.9, 1.8, 0); glVertex3f(2.9, 1.6, 0);
+			glEnd();
+		}
+	}
 }
 
 void MyMat() {
-
-	glColor3f(0xE4 / 255.0, 0xBE / 255.0, 0xFE / 255.0); // 연보라색   
+	if (gBackground == 'D') {
+		glColor3f(0xE4 / 255.0, 0xBE / 255.0, 0xFE / 255.0); // 연보라색   
+	}
+	else {
+		glColor3f(0.3, 0, 0.3);
+	}
+	
+	//glBegin(GL_POLYGON);
+	//glVertex3f(-1.5, -1.3, 0); // 바닥에 펼쳐있어야 하는데, 아직 2D라서 공중에 떠있는 평행사변형
+	//glVertex3f(1.2, -1.3, 0); // 3D로가면, 진짜 바닥에 펼쳐진 매트로 전환할 예정
+	//glVertex3f(1.5, -0.8, 0);
+	//glVertex3f(-1.2, -0.8, 0);
+	//glEnd();
 	glBegin(GL_POLYGON);
-	glVertex3f(-1.5, -1.3, 0); // 바닥에 펼쳐있어야 하는데, 아직 2D라서 공중에 떠있는 평행사변형
-	glVertex3f(1.2, -1.3, 0); // 3D로가면, 진짜 바닥에 펼쳐진 매트로 전환할 예정
-	glVertex3f(1.5, -0.8, 0);
-	glVertex3f(-1.2, -0.8, 0);
+	glVertex3f(-1.5, -1, 1.5); // 바닥에 펼쳐진 정사각형
+	glVertex3f(1.5, -1, 1.5);
+	glVertex3f(1.5, -1, -1.5);
+	glVertex3f(-1.5, -1, -1.5);
 	glEnd();
 
 } // MyMat
 
 void MyFace() {
-
-	glColor3f(251 / 255.0, 206 / 255.0, 177 / 255.0); // 살구색
-
+	if (gBackground == 'D') {
+		glColor3f(251 / 255.0, 206 / 255.0, 177 / 255.0); // 살구색
+	}
+	else {
+		glColor3f(0.6, 0.4, 0.4);
+	}
 	glPushMatrix(); // 행렬 스택(3장에서 자세히 배움)
 	glTranslatef(0, 1, 0); // 구를 이동시키기 위해서
 	glutSolidSphere(0.5, 50, 50); // glut는 원점을 기준으로 그려짐
@@ -289,7 +367,7 @@ void MyEyeMouth() {
 		glEnd();
 	}
 
-} // MyEyeMouth
+} // MyEyeMouth 
 
 void MyBody() {
 
@@ -426,6 +504,7 @@ void MyKeyboard(unsigned char key, int x, int y) {
 	glutPostRedisplay();
 
 } // MyKeyboard
+
 void MySpecial(int key, int x, int y) {
 
 	switch (key) {
@@ -464,6 +543,9 @@ void MySpecial(int key, int x, int y) {
 	case GLUT_KEY_F4: gShearleg = 0.5; gFace = 's'; gRedupperarm = 48; gBlackupperarm = -48; gRootShear = 0.5; break; // 다리 왼쪽 (전신과 부호가 다른 이유 : 상반신이 왼쪽으면 다리는 오른쪽)
 	case GLUT_KEY_F5: gShearleg = 0.0; gFace = 'u'; gRedupperarm = 0; gBlackupperarm = 0; gRootShear = 0.0; break;
 	case GLUT_KEY_F6: gShearleg = -0.5; gFace = 's'; gRedupperarm = 48; gBlackupperarm = -48; gRootShear = -0.5; break;
+
+	case GLUT_KEY_F11: if (gZ <= 3) { gZ += 0.1; } break;
+	case GLUT_KEY_F12: if (gZ >= -3) { gZ -= 0.1; } break;
 	}
 
 	glutPostRedisplay();
@@ -485,20 +567,52 @@ void MyReshape(int NewWidth, int NewHeight) {
 	gNewWidth = NewWidth, gNewHeight = NewHeight;
 	glMatrixMode(GL_PROJECTION); // reshape에는 projection
 	glLoadIdentity();
-	glOrtho(-4.0 * WidthFactor, 4.0 * WidthFactor, -3.0 * HeightFactor, 3.0 * HeightFactor, -4.0, 4.0); // z축은 x랑 같은걸로 고정
+	//glOrtho(-4.0 * WidthFactor, 4.0 * WidthFactor, -3.0 * HeightFactor, 3.0 * HeightFactor, 1, 9); // z축은 x랑 같은걸로 고정
+	gluPerspective(65, (GLfloat)NewWidth / NewHeight, 1, 9);
 
 } // MyReshape
 
-void MyInit() {
-	glClearColor(1.0, 1.0, 1.0, 1.0);
+void MyTimer(int Value) {
+	if (gBackground == 'R') {
+		gTimeslot = (gTimeslot + 1) % 100;
+		glutPostRedisplay();
+		glutTimerFunc(400, MyTimer, 1);
+	}
+}
 
+void MyMainMenu(int entryID) {
+	if (entryID == 1) {
+		glClearColor(1, 1, 1, 1);
+		gBackground = 'D';
+	}
+	else if (entryID == 2) {
+		glClearColor(0, 0, 0, 0);
+		gBackground = 'N';
+	}
+	else {
+		glClearColor(0, 0, 0, 0);
+		gBackground = 'R';
+		glutTimerFunc(400, MyTimer, 1);
+	}
+	glutPostRedisplay();
+}
+
+void MyInit() {
+	glClearColor(1.0, 1.0, 1.0, 1.0); 
+	//glEnable(GL_DEPTH_TEST);
 	// menu callback 
+	GLint MyMainMenuID = glutCreateMenu(MyMainMenu);
+	glutAddMenuEntry("Day", 1);
+	glutAddMenuEntry("Night", 2);
+	glutAddMenuEntry("Rain", 3);
+	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 } // MyInit
+
 int main(int argc, char** argv) {
 
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
 	glutInitWindowPosition(150, 0);
 	glutCreateWindow("Maximus");
