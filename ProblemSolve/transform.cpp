@@ -1,6 +1,5 @@
 #include<fstream>
 #include<stack>
-#include<string>
 using namespace std;
 #pragma warning(disable:4996)
 

@@ -27,9 +27,6 @@
     <ClCompile Include="calender.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="calender빈.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="calender철.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -82,9 +79,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="line2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="line빈.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="mail.cpp">

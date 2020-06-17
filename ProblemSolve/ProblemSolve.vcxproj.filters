@@ -117,12 +117,30 @@
     <ClCompile Include="transform.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="cryptography.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TheCatInTheHat.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="rectangles.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="contour.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="scud.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="rmq.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="transform.inp">
+    <None Include="rmq.out">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="transform.out">
+    <None Include="rmq.inp">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
