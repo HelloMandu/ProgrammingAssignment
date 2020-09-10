@@ -99,12 +99,21 @@
     <ClCompile Include="sudoku.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="path.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="primefactor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="sequence.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="sudoku.inp">
+    <None Include="sequence.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="sudoku.out">
+    <None Include="sequence.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
