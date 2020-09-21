@@ -1,1 +1,274 @@
-#test
+Chapter 1
+Operating System Definition
+OS : 사용자와 컴퓨터하드웨어 사이 중재자 역할을 하는 프로그램
+ - 사용자프로그램을 실행시키고, 사용자가 문제를 쉽게 해결할 수 있도록 한다
+ - 컴퓨터를 사용하기 편리하게 만든다
+
+컴퓨터 구조
+ - 하드웨어 : 기본 컴퓨팅 자원을 제공
+ - Operating System : 하드웨어, 소프트웨어, 데이터 등과 같은 자원을 적절하게 사용할 수 있는 방법을 제공
+ - Application programs : 컴퓨터로 사용자의 업무를 처리하기 위해 작성된 프로그램
+ - Users
+
+resource allocator : 사용자 요청에 의해 충돌이 일어났을 때 효율적이고 공평하게 사용결정
+control program : 프로그램 에러와 부적절한 사용을 예방한다
+kernel : 컴퓨터에서 항상 돌아가고 있는 프로그램
+
+bootstrap program
+ 하드디스크에 있는 os를 메모리로 올려주는 것이 Load
+ Load가 들어 있는 프로그램이 bootstrap program
+ bootstrap program이 들어 있는 메모리 ROM(비휘발성)
+
+Interrupt
+polling : '띵똥-'했을 때 무슨 소린지 몰라서 소리위치 찾아야함
+vectored interrupt system : '카톡'했을 때 카톡소리인줄 바로 알아, 무슨 소린지 찾지 않아도 알 수 있음
+
+Direct Memory Access Structure(DMA)
+CPU가 버퍼에 메모리 옮겨야한다면(인터럽트 걸렸을 때) 각 장치 컨트롤러가
+CPU를 쓰지 않는 짬짬히 메모리를 옮기는 것
+
+Storage Hierarchy(계층구조 보기)
+ - Speed
+ - Cost
+ - Volatility
+Caching : 메인메모리의 내용을 캐쉬메모리에 일시적으로 저장하여 CPU가 더 빠르게 접근하도록 하는것
+	하위메모리의 데이터를 상위메모리에 복사해 CPU접근속도를 높이는 것을 말한다
+
+Multiprogramming : 메모리에 여러 job을 저장시킨 후, 하나의 job이 CPU를 사용하지 않을 때(특히 I/O시간) 다른 job이 CPU사용
+Timesharing(multitasking) : 각 job마다 제한시간을 두어 운영체제가 CPU를 나눠가지도록 하는 것
+
+Dual-Mode
+Os가 이중 모드 동작을 통해 자체 및 다른 시스템 구성 요소를 보호, 시스템자체를 보호하기 위해 구분
+User mode and kerner mode
+ - Mode-bit provide by hardware : User mode 또는 kerner mode를 구별 
+ - kernel mode에서만 실행할 수 있는 프로그램이 있음
+ - System call : OS는 여러개의 기능으로 되어있는데 일부는 사용자가 직접 부탁할 수 있도록 되어있다.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Chapter 2
+Operating System Services
+ - User interface : 사람이 쉽게 쓰기위한 interface를 제공
+ - Program execution : 프로그램 실행
+ - I/O operation : 입출력을 실행
+ - File-system manipulation : 파일을 조직, 관리한다
+ - Communication : 컴퓨터 네트워크를 통해 다른 컴퓨터와 통신
+ - Error detection : 에러를 탐지한다
+ - Resource allocation : 자원을 할당
+ - Accounting : 프로그램 사용 통계를 낸다
+ - Protection and security : 시스템을 안전하게 보호한다
+
+System calls
+ - OS가 제공하는 서비스에 대한 프로그래밍 인터페이스
+ - 일반적으로 고급 언어 (C 또는 C ++)로 작성되며
+ -  주로 시스템 호출 직접 사용이 아닌 상위 수준의 응용 프로그램 인터페이스 (API)를 통해 프로그램에서 액세스
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Chapter 3
+Process State(Diagram보기)
+new : 프로세스 생성
+running : 명령어들이 실행되고 있다
+waiting : 프로세스가 어떤 사건(I/O완료 or 신호의 수신)이 일어나기를 기다림 
+ready : 프로세스가 CPU에 할당되기를 기다리는 상태
+terminated : 프로세스 실행 종료
+
+Process Control Block(PCB)
+ - Process state : 프로세스의 상태
+ - Process number : 각 프로세스마다 번호를 부여
+ - Program counter : 다음에 실행할 명령어의 주소
+ - CPU register : 프로그램 연산 장치
+ - CPU scheduling information : 프로세스의 우선순위정보를 가짐
+ - Memory-management information : 메모리를 관리함(어떤 영역을 어떻게 사용하는지)
+ - Accounting information : 프로세스 사용의 통계적인 정보
+ - I/O status information : 사용패턴
+
+//CPU Switch보기
+
+Process Scheduling Queues
+Job queue : 모든 프로세스의 리스트가 저장
+Ready queue :  CPU쓰기위해 기다리는 큐 - 우선순위 큐
+Device queue : I/O장치를 위해 기다리는 큐
+
+Schedulers
+Long-term scheduler(job scheduler) : 하드 디스크에서 메모리로 프로세스를 load하는 역할, 어떤 작업을 어떤 순서로 메모리에 가져와서 처리될 것인가를 결정하는 프로그램
+Short-term scheduler(CPU scheduler) : 메모리에 있는 CPU사용을 기다리는 프로세스 중에서 어떤 프로세스가 선택되는지를 결정하는 스케줄러
+I/O-bound process : I/O사용시간 > CPU사용시간
+CPU-bound process : CPU사용시간 > I/O사용시간
+
+Process Creation
+부모 프로세스는 자식 프로세스를 생성한다
+Resource sharing
+ - 부모와 자식은 모든 자원 공유
+ - 자식은 부모의 자원을 부분적 공유
+ - 부모와 자식을 모든 자원을 공유하지 않음
+Execution
+ - 부모와 자식은 동시 실행가능
+ - 부모는 자식이 종료될 때 까지 기다림
+
+fork system : 새로운 프로세스 생성
+exec system : fork후에 새로운 프로세스로 기존의 프로세스를 대체함
+
+Process Termination : 부모프로세스가 죽을 때 자식프로세스도 죽음(cascading termination)
+
+Cooperation Processes
+Independent : A와 B가 영향을 주고받지 않음
+Cooperation : A와 B가 영향을 주고받음
+협력이유
+ - 정보공유
+ - 계산속도, 스피드 up
+ - 기능별로 나눔
+ - 편리성
+
+Producer-Consumer Problem
+(Shared-Memory Solution, InsertMethod, RemoveMethod 소스보기)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Chapter5
+CPU Scheduler의 결정여부
+ 1. 입출력
+ 2. 타임슬롯을 다 썻을때 CPU를 뺏김
+ 3. 우선순위 높은것에 의해 CPU를 뺏김
+ 4. 종료시
+
+First-Come, First-Served(FCFS) Scheduling : 먼저 들어온 것을 먼저 처리
+*Convoy Effect : 소요시간이 긴 프로세스가 CPU를 먼저 사용하여 다른 프로세스가 CPU를 사용하지 못하는 현상
+
+Shortest-Job-First(SJF) Scheduling : CPUburst가 짧은 것을 먼저 처리
+ - noopreemptive : 기존의 CPUburst를 다 사용하기 전까지 선점하지않음(SJF)
+ - preemptive : 남은 process타임이 더 짧을 때 CPUburst를 선점(SRTF)
+※ Waiting Time = FinishTime - (ArriveTime + CPUburst)
+
+HRRN(Highest Response Ratio Next) Scheduling
+ - priority : (Waiting time + CPUburst) / CPUburst
+ - 비선점 알고리즘
+
+Prediction of the Length of the Next CPU Burst(ppt참조)
+전에 이용했던 CPU시간을 확인하여 미래를 예측
+
+Priority Scheduling : 우선순위가 높은 프로세스를 CPU에 먼저 할당
+ - Ploblem -> Starvation : ready queue에 들어갔을시 우선순위가 낮아 CPU를 가질 기회가 거의 없는 경우
+ - Solution -> Aging : 시간이 많이 지나가 priority를 높여주는 것
+
+Round Robin(RR) : 모든 프로세스가 q타임만큼 쓴다(ppt참고)
+ - priority based preemptive
+ - priority based non-preemptive
+※문제점 : Time-Quantum이 짧을 수록, context switch가 많이 실행되어 오버헤드가 발생한다
+
+Multiple-Processor Scheduling : multiple CPU is more complexed than single CPU
+
+Real-Time Scheduling
+Hard real-time system : 제한된 시간안에 respon을 해줘야한다(반응이 안될 시 시스템붕괴) // 생명과 직결된 현장에서 주로 사용
+Soft real-time system : 우선순위만 높여주어 좀 더 빨리 실행
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chapter6
+
+Solotion to Critical-Section Problem
+1. Mutual Exclusion(상호 베타적) : 한 크리티컬 섹션을 실행하고 있으면 다른 곳에서 실행할 수 없다
+2. Progress : 크리티컬 섹션을 실행하는 프로세스가 없을 때 크리티컬 섹션을 실행하고자 하는 프로세스가 한 개 이상 있다면 크리티컬 섹션에 들어가야한다
+3. Bounded Waiting : 크리티컬 섹션을 기다림에 있어 공정해야 한다, 한 번 임계 구역에 들어간 프로세스는 다음 번 임계 구역에 들어갈 때 제한을 두어야 한다.
+ - 모든 프로세스는 CPU사용시간을 허락받았을 시 CPU를 사용해야한다.
+ - N개의 프로세서의 CPU사용시간에 있어 상대적일 수 있다
+
+Race Condition : 프로세스들끼리 하나의 자원을 갖기 위해 싸우는 것으로, 동시에 일어날 시 의도치 않은 결과를 가져올 수 있다
+
+Peterson's Solution : 프로세스가 2개일 때 적용가능
+
+Atomic : 어떠한 명령이 실행되는 중 interrupt되지 않는다
+
+TestAndSet, Swap : lock이 false일때 critical section 실행
+
+Semaphore
+초기값 S : critical section에 들어갈 수 있는 프로세서의 수
+busy waiting : 조건이 맞을 때 무한반복하는 것
+no busy waiting : 조건이 맞을 때 CPU를 포기하고 대기
+
+Deadlock : 두 개 이상의 작업이 서로 상대방의 작업이 끝나기 만을 기다리고 있기 때문에 결과적으로 아무것도 완료되지 못하는 상태
+Starvation : priority 기반으로 CPU Scheduling을 할때 pirority가 낮은 프로세스들은 CPU를 사용할 기회가 거의 없다 // 해결책 : Aging
+
+Classical Problems of Synchronization
+1. Bounded-Buffer Problem : buffer에 저장과 읽기를 상호베타적으로 한다
+2. Readers-Writers Problem : write는 하나만, read는 여러명 허용, write와 read는 상호베타적
+3. Dining-Philosophers Problem : 젓가락 2개를 동시에 못잡고, 하나씩 잡을 수 있다.
+※ 철학자 모두 한번에 자신의 왼쪽에 있는 젓가락을 집었을 때 데드락에 빠짐
+   Solution : 짝수P는 왼쪽젓가락부터 집을 수 있고, 홀수P는 오른쪽 젓가락부터 집을 수 있도록 소스의 순서 조정
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chapter7
+
+Deadlock(교착상태) : 두 개 이상의 작업이 서로 상대방의 작업이 끝나기 만을 기다리고 있기 때문에 결과적으로 아무것도 완료되지 못하는 상태
+
+Bridge Crossing Example
+데드락이 발생했을 경우
+preempt : 데드락을 해결하기 위해 강제로 자원을 뺏는다
+rollback : 데드락을 해결하기 위해 스스로 자원을 양보한다
+Starvation : 한쪽이 계속 기다리기만 하는 상태, 기회가 거의 없는 상태
+ - 해결 : 시간대 별로 우선순위를 바꾼다
+
+System Model
+리소스타입은 하나이나 인스턴스는 여러개 가능 // Each resource type Ri has Wi instances
+모든 프로세스는 아래의 과정을 따른다
+request : os에게 요청
+use : 사용
+release : 반환
+
+Deadlock Characterization
+데드락은 아래 4가지 상황을 동시에 만족할 때 발생한다 // 무조건 발생하는 것은 아니다(필요조건)
+Mutual exclusion(상호 베타적) : 한 자원(인스턴스)은 한 프로세스만 쓸 수 있다
+Hold and Wait : 프로세스가 하나의 자원을 사용하고 있어 다른 프로세스는 기다려야 한다
+No preemption : 프로세스는 자원을 다 사용후 스스로 내려놓아야 한다 // 강제적으로 뺏을 수 없다
+Circular wait : 서로가 서로의 자원을 내려놓기를 기다리고 있는 상태
+
+Resource-Allocation Graph
+Basic Facts : 사이클이 없을 때 데드락인 경우는 없다
+사이클이 있는 경우
+ - 리소스 타입에 인스턴스가 1개일 때 무조건 데드락
+ - 리소스 타입에 인스턴스가 여러개일 때 데드락 일 수 있다
+
+Methods for Handling Deadlocks
+1. 시스템 전체가 데드락에 걸리기 않도록 한다
+2. 데드락이 발생했을 시 복구한다
+3. 데드락을 os가 무시하고 프로그램이 멈춘다
+
+Deadlock Prevention
+Mutual Exclusion
+해결 : 리소스들은 모든 자원을 공유한다
+문제 : 공유할 수 없는 자원들이 있어 비현실적이다 // print
+Hold and Wait
+해결 : 자원이 필요할 때 모든 자원을 가지고 와서 실행한다
+문제 : 너무 많은 자원이 필요할 때 다른 프로세스의 자원이 부족해 프로그램을 시작할 수 없을 수 있다 - Starvation
+        자원의 실행순서가 있는데 뒤에서 써야할 자원을 미리 가지고와서 낭비한다 - 자원사용율 저하
+No Preemption
+해결 : 다른 프로세스가 자원을 요청했을 시 할당되지 않는다면 강제로 모든 자원을 내려놓는다
+문제 : 자원을 모두 내려놓아 재시작해야하며, Hold and wait과 비슷한 방식으로 옛 자원들을 다시 획득할 수 있을 때 다시 시작할 수 있으나, 자원이 부족해 시작할 수 없을 수 있다
+Circular Wait
+해결 : 모든 자원에 번호를 부여해 자원을 요청할 때 가지고 있는 자원보다 커야한다.
+        가지고 있는 번호보다 작은 것이 필요할 때 큰 것을 내려놓고 작은 것을 가져온 후 다시 내려놓은 것을 가져온다
+문제 : 자원을 내려놓았을 시 다른 프로세스가 자원을 빼앗아 간다
+
+banker's Algorithm
+문제점
+ 1. 실제로는 프로세스가 실행 전의 자원의 수를 알기 힘들다
+ 2. 요청이 들어올 때마다 알고리즘을 실행하기 때문에 비효율적이다
+safe : 데드락으로부터 안전한 상태
+unsafe : 데드락으로부터 불안전한 상태 (데드락에 걸릴 가능성이 있다)
+※ unsafe상태일시 요청을 들어주지않고 기다리라고 한다
+
+Deadlock Detection
+ 1. 데드락 상태를 허용
+ 2. 데드락 탐지 알고리즘 // cycle이 생기면 데드락
+ 3. 이전의 상태로 되돌아감
+
+Recovery from Deadlock
+ 1. 우선순위 낮은 것부터 죽이기
+ 2. 끝나는 시간이 긴 것부터 죽이기
+ 3. 짧게 기다린 것부터 죽이기
+ 4. 자원이 많이 필요한 것부터 죽이기
+ 5. 대화형과 일괄처리중 하나 죽이기
+
+Starvation
+문제 : 우선순위가 낮아 계속 희생되면 기아상태에 빠질 수 있다
+해결 : 계속 희생되면 우선순위를 높여 희생되지 않도록 한다
+
