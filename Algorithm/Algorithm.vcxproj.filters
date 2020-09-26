@@ -108,12 +108,15 @@
     <ClCompile Include="sequence.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="expression.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="sequence.inp">
+    <None Include="fibonacci.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="sequence.out">
+    <None Include="fibonacci.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
