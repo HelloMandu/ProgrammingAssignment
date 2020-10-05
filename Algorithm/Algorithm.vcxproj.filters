@@ -111,12 +111,21 @@
     <ClCompile Include="expression.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="polygon.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="gridpath.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="path2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="fibonacci.inp">
+    <None Include="path2.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="fibonacci.out">
+    <None Include="path2.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
