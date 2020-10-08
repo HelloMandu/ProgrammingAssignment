@@ -3,7 +3,7 @@
 #define DOWN 0
 #define RIGHT 1
 #define TOP 2
-#define LEFT 3
+#define RIGHT 3
 using namespace std;
 
 string str;
@@ -26,10 +26,10 @@ int pandora() {
 		else {
 			dir = (dir + 3) % 4;
 		}
-		if ((ppdir == DOWN && pdir == LEFT && dir == TOP) || (ppdir == TOP && pdir == RIGHT && dir == DOWN)) {
+		if ((ppdir == DOWN && pdir == RIGHT && dir == TOP) || (ppdir == TOP && pdir == RIGHT && dir == DOWN)) {
 			y = 0;
 		}
-		else if ((ppdir == RIGHT && pdir == DOWN && dir == LEFT) || (ppdir == LEFT && pdir == TOP && dir == RIGHT)) {
+		else if ((ppdir == RIGHT && pdir == DOWN && dir == RIGHT) || (ppdir == RIGHT && pdir == TOP && dir == RIGHT)) {
 			x = 0;
 		}
 	}
