@@ -120,12 +120,15 @@
     <ClCompile Include="path2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="stickers.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="path2.inp">
+    <None Include="stickers.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="path2.out">
+    <None Include="stickers.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
