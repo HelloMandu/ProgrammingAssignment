@@ -123,12 +123,15 @@
     <ClCompile Include="stickers.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="addingways.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="stickers.inp">
+    <None Include="addingways.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="stickers.out">
+    <None Include="addingways.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
