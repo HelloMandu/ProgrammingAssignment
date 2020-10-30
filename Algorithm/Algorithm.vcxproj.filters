@@ -126,12 +126,15 @@
     <ClCompile Include="addingways.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="balloon.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="addingways.inp">
+    <None Include="balloon.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="addingways.out">
+    <None Include="balloon.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
