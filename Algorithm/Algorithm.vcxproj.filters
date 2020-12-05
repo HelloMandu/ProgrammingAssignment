@@ -129,12 +129,15 @@
     <ClCompile Include="balloon.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="coin2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="balloon.inp">
+    <None Include="coin2.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="balloon.out">
+    <None Include="coin2.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
