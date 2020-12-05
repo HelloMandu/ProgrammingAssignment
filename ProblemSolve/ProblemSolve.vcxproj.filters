@@ -135,12 +135,18 @@
     <ClCompile Include="rmq.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="palindrome.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="numbers.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="rmq.out">
+    <None Include="numbers.inp">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="rmq.inp">
+    <None Include="numbers.out">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
